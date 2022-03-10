@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
 import authReducer from './authReducer';
+import todos from './todos';
 
-export default combineReducers({
+const reducers = combineReducers({ 
   auth: authReducer,
-  form: formReducer
+  todos,
 });
+
+export default reducers;
+
+// passing all reducers to the combined reducers & assigned to the variable called //reducers

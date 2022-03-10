@@ -4,18 +4,16 @@ import GoogleAuth from './GoogleAuth';
 
 const Header = () => {
   return (
-    <div className="ui secondary pointing menu">
-      <Link to="/" className="item">
-        Streamy
-      </Link>
-      <div className="right menu">
+    <header className="header">
+      <div className="ui secondary pointing menu header">
         <Link to="/" className="item">
-          All Streams
+          <h1>React Todo App</h1>
         </Link>
-        <GoogleAuth />
-
+        <div className="right menu">
+          <GoogleAuth />
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 
