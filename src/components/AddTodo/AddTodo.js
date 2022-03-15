@@ -17,9 +17,16 @@ const AddTodo = () => {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(addTodo({ task: tasks, id: cuid() }));
-    e.target.userInput.value = '';
-    console.log(tasks);
+    if (tasks !== " ") {
+      dispatch(addTodo({ task: tasks, id: cuid() }));
+    //e.target.userInput.value = '';
+
+    setTasks(" "); 
+
+    //console.log(tasks);
+
+    }
+    
   }
 
   const getTodos = async () => {
@@ -41,7 +48,7 @@ const AddTodo = () => {
   }, []);
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="userInput" onChange={(e) => handleInput(e)} />
+      <input value={tasks}  type="text" name="userInput" onChange={(e) => handleInput(e)} />
       <button type="submit">Add Todo</button>
     </form>
   );
