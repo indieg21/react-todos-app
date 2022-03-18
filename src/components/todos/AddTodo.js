@@ -9,14 +9,17 @@ const AddTodo = () => {
   const [tasks, setTasks] = useState('');
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos);
+  const userLogin = useSelector((state) => state.auth);
   console.log(todos.data);
   console.log(todos);
   function handleInput(e) {
     setTasks(e.target.value);
     console.log(tasks);
   }
+  console.log(userLogin.isSignedIn)
   function handleSubmit(e) {
     e.preventDefault();
+   if(userLogin.isSignedIn){
     if (tasks !== " ") {
       dispatch(addTodo({ task: tasks, id: cuid() }));
     //e.target.userInput.value = '';
@@ -26,6 +29,9 @@ const AddTodo = () => {
     //console.log(tasks);
 
     }
+   }else{
+     alert("You need to be logged in to add a Todo")
+   }
     
   }
 

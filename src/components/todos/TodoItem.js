@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteTodo, updateTodo } from '../../actions';
+import {isLoggedIn} from "../GoogleAuth"
 
 const TodoItem = ({ task }) => {
   const [isUpdate, setIsUpdate] = useState(false);
@@ -8,11 +9,17 @@ const TodoItem = ({ task }) => {
   const userLogin = useSelector((state) => state.auth);
   console.log(userLogin.isSignedIn);
   const textRef = useRef(null);
+
   function editItemToState(e) {
     e.preventDefault();
-    dispatch(updateTodo({ message: textRef.current.value, id: task.id }));
-    setIsUpdate(false);
-    textRef.current = null;
+    if (textRef.current.value !== ""){
+
+      dispatch(updateTodo({ message: textRef.current.value, id: task.id }));
+      setIsUpdate(false);
+      textRef.current = null;
+    }else{
+      alert("You're Todo cannot be left empty!")
+    }
   }
 
   const renderForm = () => {
