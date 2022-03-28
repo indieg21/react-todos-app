@@ -20,7 +20,7 @@ const AddTodo = () => {
   function handleSubmit(e) {
     e.preventDefault();
    if(userLogin.isSignedIn){
-    if (tasks !== " ") {
+    if (tasks.trim().length) {
       dispatch(addTodo({ task: tasks, id: cuid() }));
     //e.target.userInput.value = '';
 
